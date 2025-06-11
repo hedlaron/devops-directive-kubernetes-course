@@ -1,5 +1,6 @@
 version: "3"
-
+# this is just an example of how to create a pod using the CLI
+# we don't usually create pods using the CLI
 env:
   BORDER: double
   BORDER_FOREGROUND: "212"
@@ -12,9 +13,10 @@ tasks:
     desc: "Create a namespace for these examples and set as default"
     cmds:
       - kubectl apply -f Namespace.yaml
-      - kubens ${NAMESPACE}
+      - kubens ${NAMESPACE} # set the namespace as the default namespace
 
   02-wrong-way-create:
+    # there will be no track of this pod 
     desc: "Create a pod the wrong way"
     cmds:
       - cmd: gum style "🚨 PLEASE DO NOT DO THIS 🚨"
@@ -22,6 +24,7 @@ tasks:
       - kubectl run --image=nginx:1.26.0 -n ${NAMESPACE} created-the-wrong-way
 
   03-minimal-apply:
+    # create from a file - it's declarative
     desc: "Apply the minimal pod configuration"
     cmds:
       - kubectl apply -n ${NAMESPACE} -f Pod.nginx-minimal.yaml
@@ -32,6 +35,7 @@ tasks:
       - kubectl port-forward -n ${NAMESPACE} nginx-minimal 8080:80
 
   05-better-apply:
+    # this is the way to go
     desc: "Apply the better pod configuration"
     cmds:
       - kubectl apply -n ${NAMESPACE} -f Pod.nginx-better.yaml

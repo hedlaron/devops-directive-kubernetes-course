@@ -1,11 +1,16 @@
 version: "3"
-
+# this is just an example of how to create a namespace using the CLI
+# in practice, you would use a YAML file to create a namespace
+# this is because it is more portable and easier to manage
+# and it is more consistent with the Kubernetes way of doing things
 tasks:
+  # example of creating a namespace using the CLI
   01-create-namespace:
     cmds:
       - kubectl create namespace 04--namespace-cli
     desc: Create a namespace in the cluster
 
+  # BEST PRACTICE: example of creating a namespace using a YAML file
   02-apply-namespace:
     cmds:
       - kubectl apply -f Namespace.yaml

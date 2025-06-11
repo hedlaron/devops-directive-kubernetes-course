@@ -1,5 +1,7 @@
 version: "3"
-
+# Deployment is the go-to resource for deploying and managing applications
+# it is a higher level resource that manages the ReplicaSet and Pods for you
+# it is the most common resource used to deploy applications
 env:
   BORDER: double
   BORDER_FOREGROUND: "212"

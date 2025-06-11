@@ -17,6 +17,7 @@ spec:
           port: 8080
       resources:
         limits:
+          # protection against resource exhaustion
           memory: "50Mi"
         requests:
           memory: "25Mi"
